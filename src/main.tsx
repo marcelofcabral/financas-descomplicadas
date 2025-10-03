@@ -25,6 +25,17 @@ const router = createBrowserRouter([
 				Component: ContinuarAprendendo,
 			},
 			{
+				path: "modulos",
+				children: [
+					{
+						path: "conceitos-basicos",
+					},
+					{
+						path: "investimentos",
+					},
+				],
+			},
+			{
 				path: "calculadora-financeira",
 				Component: CalculadoraFinanceira,
 			},

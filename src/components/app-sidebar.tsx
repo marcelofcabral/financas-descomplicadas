@@ -28,9 +28,16 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
+	SidebarMenuSub,
+	SidebarMenuSubButton,
+	SidebarMenuSubItem,
 	SidebarRail,
 } from "@/components/ui/sidebar";
-import { Collapsible, CollapsibleTrigger } from "./ui/collapsible";
+import {
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from "./ui/collapsible";
 
 // Finance education platform data
 const data = {
@@ -214,6 +221,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
 									</SidebarMenuButton>
 								</CollapsibleTrigger>
+								<CollapsibleContent>
+									<SidebarMenuSub>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">Conceitos Básicos</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">Investimentos</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+									</SidebarMenuSub>
+								</CollapsibleContent>
 							</SidebarMenuItem>
 						</Collapsible>
 						<Collapsible
@@ -224,12 +245,46 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 						>
 							<SidebarMenuItem>
 								<CollapsibleTrigger asChild>
-									<SidebarMenuButton tooltip="Módulos">
+									<SidebarMenuButton tooltip="Calculadora Financeira">
 										{<Calculator />}
 										<span>Calculadora Financeira</span>
 										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
 									</SidebarMenuButton>
 								</CollapsibleTrigger>
+								<CollapsibleContent>
+									<SidebarMenuSub>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">Juros Compostos</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">Financiamento</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">Empréstimo</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">Aposentadoria</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">Rentabilidade</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<a href="/#">ROI</a>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+									</SidebarMenuSub>
+								</CollapsibleContent>
 							</SidebarMenuItem>
 						</Collapsible>
 					</SidebarMenu>
