@@ -9,8 +9,10 @@ function App() {
 	return (
 		<>
 			<AppSidebar />
-			<main>
-				<Outlet />
+			<main className="w-full flex justify-center">
+				<section className="w-[100%] md:w-[80%] py-5">
+					<Outlet />
+				</section>
 			</main>
 		</>
 	);

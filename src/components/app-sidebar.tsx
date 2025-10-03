@@ -6,6 +6,7 @@ import {
 	ChevronRight,
 	DollarSign,
 	GraduationCap,
+	LibraryBig,
 	LineChart,
 	PieChart,
 	Settings2,
@@ -175,18 +176,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			className="bg-background text-text border-border"
 		>
 			<SidebarHeader className="border-b border-border">
-				<div className="flex items-center gap-3">
-					<div className="flex min-h-8 min-w-8 items-center justify-center rounded-lg bg-primary">
-						<DollarSign className="h-5 w-5 text-white" />
+				<a href="/#">
+					<div className="flex items-center gap-3">
+						<div className="flex min-h-8 min-w-8 items-center justify-center rounded-lg bg-primary">
+							<DollarSign className="h-5 w-5 text-white" />
+						</div>
+						<div className="flex flex-col overflow-x-hidden">
+							<span className="text-lg font-bold">Finanças</span>
+							<span className="text-sm opacity-70">Descomplicadas</span>
+						</div>
 					</div>
-					<div className="flex flex-col overflow-x-hidden">
-						<span className="text-lg font-bold">Finanças</span>
-						<span className="text-sm opacity-70">Descomplicadas</span>
-					</div>
-				</div>
+				</a>
 			</SidebarHeader>
 
-			<SidebarContent className="space-y-6">
+			<SidebarContent className="space-y-6 text-text">
 				<SidebarGroup>
 					<SidebarMenu>
 						<SidebarMenuItem key="continuar-aprendendo">
@@ -200,14 +203,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 						<Collapsible
 							key="modulos"
 							asChild
-							defaultOpen={true}
+							defaultOpen={false}
+							className="group/collapsible"
+						>
+							<SidebarMenuItem>
+								<CollapsibleTrigger asChild>
+									<SidebarMenuButton tooltip="Módulos">
+										<LibraryBig />
+										<span>Módulos</span>
+										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+									</SidebarMenuButton>
+								</CollapsibleTrigger>
+							</SidebarMenuItem>
+						</Collapsible>
+						<Collapsible
+							key="calculadora-financeira"
+							asChild
+							defaultOpen={false}
 							className="group/collapsible"
 						>
 							<SidebarMenuItem>
 								<CollapsibleTrigger asChild>
 									<SidebarMenuButton tooltip="Módulos">
 										{<Calculator />}
-										<span>Módulos</span>
+										<span>Calculadora Financeira</span>
 										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
 									</SidebarMenuButton>
 								</CollapsibleTrigger>

@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { SidebarProvider } from "@/components/ui/sidebar.tsx";
 import App from "./app";
+import CalculadoraFinanceira from "./app/pages/calculadora-financeira";
+import ContinuarAprendendo from "./app/pages/continuar-aprendendo";
+import Home from "./app/pages/home";
 
 const queryClient = new QueryClient();
 
@@ -12,6 +15,20 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		Component: App,
+		children: [
+			{
+				index: true,
+				Component: Home,
+			},
+			{
+				path: "continuar-aprendendo",
+				Component: ContinuarAprendendo,
+			},
+			{
+				path: "calculadora-financeira",
+				Component: CalculadoraFinanceira,
+			},
+		],
 	},
 ]);
 
