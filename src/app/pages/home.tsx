@@ -1,6 +1,6 @@
 import Title from "@/components/title";
 
-const Home = () => {
+const Home: React.FC = () => {
 	return (
 		<div>
 			<Title>Bem-vindo ao Finanças Descomplicadas!</Title>

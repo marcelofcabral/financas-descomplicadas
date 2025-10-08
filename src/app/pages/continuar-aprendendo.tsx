@@ -1,4 +1,4 @@
-const ContinuarAprendendo = () => {
+const ContinuarAprendendo: React.FC = () => {
 	return (
 		<>
 			<h1>Continuar Aprendendo</h1>

@@ -1,3 +1,4 @@
+/*biome-ignore-all lint/suspicious/noUnknownAtRules: tailwind css file*/
 @import "tw-animate-css";
 @import "./app/app.css";
 

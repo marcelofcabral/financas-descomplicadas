@@ -1,4 +1,4 @@
-const CalculadoraFinanceira = () => {
+const CalculadoraFinanceira: React.FC = () => {
 	return (
 		<>
 			<h1>Calculadora Financeira</h1>

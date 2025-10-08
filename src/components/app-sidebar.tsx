@@ -33,6 +33,8 @@ import {
 	SidebarMenuSubItem,
 	SidebarRail,
 } from "@/components/ui/sidebar";
+import AuthDialog from "../features/auth/components/auth-dialog";
+import { useUser } from "../features/auth/context/user-context";
 import {
 	Collapsible,
 	CollapsibleContent,
@@ -176,11 +178,13 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+	const { user } = useUser();
+
 	return (
 		<Sidebar
 			collapsible="icon"
 			{...props}
-			className="bg-background text-text border-border"
+			className="bg-background text-text border-border truncate"
 		>
 			<SidebarHeader className="border-b border-border">
 				<a href="/#">
@@ -292,7 +296,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			</SidebarContent>
 
 			<SidebarFooter className="border-t border-border">
-				<NavUser user={data.user} />
+				{user ? (
+					<NavUser
+						user={{
+							name: user.full_name,
+							email: user.email,
+							avatar: user.avatar_url || "",
+						}}
+					/>
+				) : (
+					<AuthDialog />
+				)}
 			</SidebarFooter>
 
 			<SidebarRail />

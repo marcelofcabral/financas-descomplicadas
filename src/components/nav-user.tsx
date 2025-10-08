@@ -35,6 +35,16 @@ export function NavUser({
 }) {
 	const { isMobile } = useSidebar();
 
+	// Generate initials from the user's name
+	const getInitials = (name: string) => {
+		return name
+			.split(" ")
+			.map((part) => part[0])
+			.join("")
+			.toUpperCase()
+			.slice(0, 2);
+	};
+
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>
@@ -107,10 +117,12 @@ export function NavUser({
 					asChild
 					//className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
 				>
-					<a href="/account">
+					<a href="/#">
 						<Avatar className="h-8 w-8 rounded-lg">
 							<AvatarImage src={user.avatar} alt={user.name} />
-							<AvatarFallback className="rounded-lg">CN</AvatarFallback>
+							<AvatarFallback className="rounded-lg">
+								{getInitials(user.name)}
+							</AvatarFallback>
 						</Avatar>
 						<div className="grid flex-1 text-left text-sm leading-tight">
 							<span className="truncate font-medium">{user.name}</span>

@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const Account = () => {
+const Account: React.FC = () => {
 	return (
 		<div>
 			<Avatar className="mx-auto size-20">

@@ -4,6 +4,7 @@ import "@fontsource/inter/500.css";
 import "@fontsource/inter/700.css";
 import { Outlet } from "react-router";
 import { AppSidebar } from "@/components/app-sidebar.tsx";
+import { Toaster } from "@/components/ui/sonner";
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<section className="w-[100%] md:w-[80%] py-5">
 					<Outlet />
 				</section>
+				<Toaster />
 			</main>
 		</>
 	);
