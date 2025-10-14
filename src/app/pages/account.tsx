@@ -1,3 +1,6 @@
+import { LogOut, Mail, User } from "lucide-react";
+import { useNavigate } from "react-router";
+import Title from "@/components/title";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,10 +11,10 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
-import Title from "@/components/title";
-import { useLogoutUserMutation, useUserDataQuery } from "@/features/auth/api/login";
-import { LogOut, Mail, User } from "lucide-react";
-import { useNavigate } from "react-router";
+import {
+	useLogoutUserMutation,
+	useUserDataQuery,
+} from "@/features/auth/api/login";
 
 const getInitials = (name: string) => {
 	return name
