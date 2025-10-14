@@ -14,6 +14,7 @@ import {
 	Wallet,
 } from "lucide-react";
 import type * as React from "react";
+import { Link } from "react-router";
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
@@ -33,152 +34,17 @@ import {
 	SidebarMenuSubItem,
 	SidebarRail,
 } from "@/components/ui/sidebar";
+import { useUserDataQuery } from "@/features/auth/api/login";
 import AuthDialog from "../features/auth/components/auth-dialog";
-import { useUser } from "../features/auth/context/user-context";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
 } from "./ui/collapsible";
-
-// Finance education platform data
-const data = {
-	user: {
-		name: "João Silva",
-		email: "joao@exemplo.com",
-		avatar: "/avatars/user.jpg",
-	},
-	teams: [
-		{
-			name: "Finanças Pessoais",
-			logo: Wallet,
-			plan: "Básico",
-		},
-		{
-			name: "Investimentos",
-			logo: TrendingUp,
-			plan: "Avançado",
-		},
-		{
-			name: "Educação Financeira",
-			logo: GraduationCap,
-			plan: "Premium",
-		},
-	],
-	navMain: [
-		{
-			title: "Continuar Aprendizado",
-			url: "#",
-			icon: LineChart,
-			// isActive: true,
-			/*
-			items: [
-				{
-					title: "Visão Geral",
-					url: "#",
-				},
-				{
-					title: "Metas Financeiras",
-					url: "#",
-				},
-				{
-					title: "Relatórios",
-					url: "#",
-				},
-			],
-      */
-		},
-		{
-			title: "Aprender",
-			url: "#",
-			icon: BookOpen,
-			items: [
-				{
-					title: "Conceitos Básicos",
-					url: "#",
-				},
-				{
-					title: "Investimentos",
-					url: "#",
-				},
-				{
-					title: "Planejamento",
-					url: "#",
-				},
-				{
-					title: "Análise de Risco",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Calculadoras",
-			url: "#",
-			icon: Calculator,
-			items: [
-				{
-					title: "Juros Compostos",
-					url: "#",
-				},
-				{
-					title: "Financiamento",
-					url: "#",
-				},
-				{
-					title: "Aposentadoria",
-					url: "#",
-				},
-				{
-					title: "Rentabilidade",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Configurações",
-			url: "#",
-			icon: Settings2,
-			items: [
-				{
-					title: "Perfil",
-					url: "#",
-				},
-				{
-					title: "Preferências",
-					url: "#",
-				},
-				{
-					title: "Notificações",
-					url: "#",
-				},
-				{
-					title: "Privacidade",
-					url: "#",
-				},
-			],
-		},
-	],
-	projects: [
-		{
-			name: "Orçamento Pessoal",
-			url: "#",
-			icon: DollarSign,
-		},
-		{
-			name: "Carteira de Investimentos",
-			url: "#",
-			icon: PieChart,
-		},
-		{
-			name: "Planejamento Futuro",
-			url: "#",
-			icon: TrendingUp,
-		},
-	],
-};
+import { Spinner } from "./ui/spinner";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-	const { user } = useUser();
+	const { data: user, isLoading } = useUserDataQuery();
 
 	return (
 		<Sidebar
@@ -187,7 +53,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			className="bg-background text-text border-border truncate"
 		>
 			<SidebarHeader className="border-b border-border">
-				<a href="/#">
+				<Link to="/">
 					<div className="flex items-center gap-3">
 						<div className="flex min-h-8 min-w-8 items-center justify-center rounded-lg bg-primary">
 							<DollarSign className="h-5 w-5 text-white" />
@@ -197,7 +63,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 							<span className="text-sm opacity-70">Descomplicadas</span>
 						</div>
 					</div>
-				</a>
+				</Link>
 			</SidebarHeader>
 
 			<SidebarContent className="space-y-6 text-text">
@@ -205,10 +71,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 					<SidebarMenu>
 						<SidebarMenuItem key="continuar-aprendendo">
 							<SidebarMenuButton asChild>
-								<a href="/#">
+								<Link to="/continuar-aprendendo">
 									<BookOpen />
 									<span>Continuar Aprendendo</span>
-								</a>
+								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
 						<Collapsible
@@ -227,14 +93,71 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 								</CollapsibleTrigger>
 								<CollapsibleContent>
 									<SidebarMenuSub>
+										<Collapsible
+											key="conceitos-basicos"
+											asChild
+											defaultOpen={false}
+											className="group/collapsible-nested"
+										>
+											<SidebarMenuSubItem>
+												<CollapsibleTrigger asChild>
+													<SidebarMenuSubButton>
+														Conceitos Básicos
+														<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible-nested:rotate-90" />
+													</SidebarMenuSubButton>
+												</CollapsibleTrigger>
+												<CollapsibleContent>
+													<SidebarMenuSub>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton asChild>
+																<Link to="/modulos/conceitos-basicos/taxas-e-juros">
+																	Taxas e Juros
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton
+																asChild
+																className="h-auto py-2"
+															>
+																<Link
+																	to="/modulos/conceitos-basicos/gerenciar-dinheiro"
+																	className="whitespace-normal break-words leading-tight"
+																>
+																	Como gerenciar seu dinheiro
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton
+																asChild
+																className="h-auto py-2"
+															>
+																<Link
+																	to="/modulos/conceitos-basicos/negociacao-dividas"
+																	className="whitespace-normal break-words leading-tight"
+																>
+																	Negociação de dívidas
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+													</SidebarMenuSub>
+												</CollapsibleContent>
+											</SidebarMenuSubItem>
+										</Collapsible>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">Conceitos Básicos</a>
+												<Link to="#">Reserva de Emergência</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">Investimentos</a>
+												<Link to="#">Formas de Investimento</Link>
+											</SidebarMenuSubButton>
+										</SidebarMenuSubItem>
+										<SidebarMenuSubItem>
+											<SidebarMenuSubButton asChild>
+												<Link to="#">Gestão de Ativos</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 									</SidebarMenuSub>
@@ -259,32 +182,32 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 									<SidebarMenuSub>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">Juros Compostos</a>
+												<Link to="#">Juros Compostos</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">Financiamento</a>
+												<Link to="#">Financiamento</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">Empréstimo</a>
+												<Link to="#">Empréstimo</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">Aposentadoria</a>
+												<Link to="#">Aposentadoria</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">Rentabilidade</a>
+												<Link to="#">Rentabilidade</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<a href="/#">ROI</a>
+												<Link to="#">ROI</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 									</SidebarMenuSub>
@@ -296,7 +219,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			</SidebarContent>
 
 			<SidebarFooter className="border-t border-border">
-				{user ? (
+				{isLoading ? (
+					<Spinner className="m-auto" />
+				) : user ? (
 					<NavUser
 						user={{
 							name: user.full_name,

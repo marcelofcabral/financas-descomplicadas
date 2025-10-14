@@ -14,7 +14,7 @@ function App() {
 				<section className="w-[100%] md:w-[80%] py-5">
 					<Outlet />
 				</section>
-				<Toaster />
+				<Toaster richColors theme="light" />
 			</main>
 		</>
 	);

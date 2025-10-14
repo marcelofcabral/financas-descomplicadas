@@ -16,19 +16,26 @@ import { SignupForm } from "./signup-form";
 
 const AuthDialog: React.FC = () => {
 	const [authType, setAuthType] = useState<"login" | "signup">("login");
+	const [isOpen, setIsOpen] = useState(false);
 
 	const form =
 		authType === "login" ? (
-			<LoginForm onSignUpClick={() => setAuthType("signup")} />
+			<LoginForm
+				onLoginFinish={() => setIsOpen(false)}
+				onSignUpClick={() => setAuthType("signup")}
+			/>
 		) : (
-			<SignupForm onLoginClick={() => setAuthType("login")} />
+			<SignupForm
+				onSignupFinish={() => setIsOpen(false)}
+				onLoginClick={() => setAuthType("login")}
+			/>
 		);
 
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>
 				<SidebarMenuButton>
-					<Dialog>
+					<Dialog open={isOpen} onOpenChange={setIsOpen}>
 						<DialogTrigger asChild>
 							<div className="flex items-center justify-center gap-x-1 ml-[-4px]">
 								<User />

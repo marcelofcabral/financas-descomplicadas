@@ -6,6 +6,7 @@ import {
 	LogOut,
 	Sparkles,
 } from "lucide-react";
+import { Link } from "react-router";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -23,6 +24,17 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from "@/components/ui/sidebar";
+import { useLogoutUserMutation } from "@/features/auth/api/login";
+import { Spinner } from "./ui/spinner";
+
+const getInitials = (name: string) => {
+	return name
+		.split(" ")
+		.map((part) => part[0])
+		.join("")
+		.toUpperCase()
+		.slice(0, 2);
+};
 
 export function NavUser({
 	user,
@@ -33,21 +45,13 @@ export function NavUser({
 		avatar: string;
 	};
 }) {
-	const { isMobile } = useSidebar();
+	const { open } = useSidebar();
 
-	// Generate initials from the user's name
-	const getInitials = (name: string) => {
-		return name
-			.split(" ")
-			.map((part) => part[0])
-			.join("")
-			.toUpperCase()
-			.slice(0, 2);
-	};
+	const logoutMutation = useLogoutUserMutation();
 
 	return (
 		<SidebarMenu>
-			<SidebarMenuItem>
+			<SidebarMenuItem className="flex">
 				{/*<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						<SidebarMenuButton
@@ -112,24 +116,34 @@ export function NavUser({
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>*/}
-				<SidebarMenuButton
-					size="lg"
-					asChild
-					//className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-				>
-					<a href="/#">
-						<Avatar className="h-8 w-8 rounded-lg">
-							<AvatarImage src={user.avatar} alt={user.name} />
-							<AvatarFallback className="rounded-lg">
-								{getInitials(user.name)}
-							</AvatarFallback>
-						</Avatar>
-						<div className="grid flex-1 text-left text-sm leading-tight">
-							<span className="truncate font-medium">{user.name}</span>
-							<span className="truncate text-xs">{user.email}</span>
-						</div>
-					</a>
-				</SidebarMenuButton>
+				{logoutMutation.isPending ? (
+					<Spinner className="m-auto" />
+				) : (
+					<>
+						<SidebarMenuButton size="lg" asChild className="flex-8">
+							<Link to="/account">
+								<Avatar className="h-8 w-8 rounded-lg">
+									<AvatarImage src={user.avatar} alt={user.name} />
+									<AvatarFallback className="rounded-lg">
+										{getInitials(user.name)}
+									</AvatarFallback>
+								</Avatar>
+								<div className="grid flex-1 text-left text-sm leading-tight">
+									<span className="truncate font-medium">{user.name}</span>
+									<span className="truncate text-xs">{user.email}</span>
+								</div>
+							</Link>
+						</SidebarMenuButton>
+
+						<SidebarMenuButton
+							size="lg"
+							className="flex-1"
+							onClick={() => logoutMutation.mutate()}
+						>
+							<LogOut className={`m-auto ${open ? "visible" : "hidden"}`} />
+						</SidebarMenuButton>
+					</>
+				)}
 			</SidebarMenuItem>
 		</SidebarMenu>
 	);

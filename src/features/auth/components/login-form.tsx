@@ -1,7 +1,7 @@
 // biome-ignore-all lint: shadcn component
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { use } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -22,12 +22,11 @@ import {
 	FormLabel,
 	FormMessage,
 } from "../../../components/ui/form";
-import { useLoginUser, useUserData } from "../api/login";
-import { useUser } from "../context/user-context";
-import { type LoginRequestData, loginFormSchema } from "../types/login";
+import { useLoginUserMutation, useUserDataQuery } from "../api/login";
+import { type LoginFormData, loginFormSchema } from "../types/login";
 
-const useLoginForm = () => {
-	const form = useForm<LoginRequestData>({
+const useLoginForm = (onLoginFinish: () => void) => {
+	const form = useForm<LoginFormData>({
 		resolver: zodResolver(loginFormSchema),
 		defaultValues: {
 			email: "",
@@ -35,42 +34,43 @@ const useLoginForm = () => {
 		},
 	});
 
-	const loginUserMutation = useLoginUser();
-	const userDataQuery = useUserData();
+	const loginUserMutation = useLoginUserMutation();
+	const userDataQuery = useUserDataQuery();
 
-	const { setUser } = useUser();
-
-	const onSubmit = async (values: LoginRequestData) => {
+	const onSubmit = async (values: LoginFormData) => {
 		try {
-			const response = await loginUserMutation.mutateAsync(values);
-
-			if (response.user) {
-				const { data: userData } = await userDataQuery.refetch();
-
-				console.log(userData);
-
-				if (userData) {
-					console.log(userData);
-					setUser(userData);
-					toast.success("Login realizado com sucesso!");
-					form.reset();
-				}
-			}
+			await loginUserMutation.mutateAsync(values);
+			toast.success("Login realizado com sucesso!");
 		} catch (error) {
 			toast.error("Erro ao realizar login. Tente novamente.");
 			console.error("Login error:", error);
 		}
 	};
 
-	return { form, onSubmit, isPending: loginUserMutation.isPending };
+	useEffect(() => {
+		if (userDataQuery.isSuccess) {
+			onLoginFinish();
+		}
+	}, [userDataQuery.isSuccess]);
+
+	return {
+		form,
+		onSubmit,
+		isPending: loginUserMutation.isPending || userDataQuery.isLoading,
+	};
 };
 
 interface LoginFormProps extends React.ComponentProps<"div"> {
-	onSignUpClick?: () => void;
+	onSignUpClick: () => void;
+	onLoginFinish: () => void;
 }
 
-export function LoginForm({ onSignUpClick, ...props }: LoginFormProps) {
-	const { form, onSubmit, isPending } = useLoginForm();
+export function LoginForm({
+	onSignUpClick,
+	onLoginFinish,
+	...props
+}: LoginFormProps) {
+	const { form, onSubmit, isPending } = useLoginForm(onLoginFinish);
 
 	return (
 		<Card className="bg-transparent border-none shadow-none p-0" {...props}>

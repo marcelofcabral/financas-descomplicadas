@@ -1,6 +1,7 @@
 // biome-ignore-all lint: shadcn component
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -23,13 +24,9 @@ import {
 	FormMessage,
 } from "../../../components/ui/form";
 import { useSignUpUser } from "../api/signup";
-import {
-	type SignUpFormData,
-	type SignUpRequestData,
-	signupFormSchema,
-} from "../types/signup";
+import { type SignUpFormData, signupFormSchema } from "../types/signup";
 
-const useSignupForm = () => {
+const useSignupForm = (onSignupFinish: () => void) => {
 	const form = useForm<SignUpFormData>({
 		resolver: zodResolver(signupFormSchema),
 		defaultValues: {
@@ -53,15 +50,24 @@ const useSignupForm = () => {
 		}
 	};
 
+	useEffect(() => {
+		if (signUpUserMutation.isSuccess) onSignupFinish();
+	}, [signUpUserMutation.isSuccess]);
+
 	return { form, onSubmit, isPending: signUpUserMutation.isPending };
 };
 
 interface SignupFormProps extends React.ComponentProps<"div"> {
-	onLoginClick?: () => void;
+	onLoginClick: () => void;
+	onSignupFinish: () => void;
 }
 
-export function SignupForm({ onLoginClick, ...props }: SignupFormProps) {
-	const { form, onSubmit, isPending } = useSignupForm();
+export function SignupForm({
+	onLoginClick,
+	onSignupFinish,
+	...props
+}: SignupFormProps) {
+	const { form, onSubmit, isPending } = useSignupForm(onSignupFinish);
 
 	return (
 		<Card className="bg-transparent border-none shadow-none p-0" {...props}>
