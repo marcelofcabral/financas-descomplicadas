@@ -101,7 +101,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 										>
 											<SidebarMenuSubItem>
 												<CollapsibleTrigger asChild>
-													<SidebarMenuSubButton>
+													<SidebarMenuSubButton className="select-none">
 														Conceitos Básicos
 														<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible-nested:rotate-90" />
 													</SidebarMenuSubButton>
@@ -150,11 +150,60 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 												<Link to="#">Reserva de Emergência</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
-										<SidebarMenuSubItem>
-											<SidebarMenuSubButton asChild>
-												<Link to="#">Formas de Investimento</Link>
-											</SidebarMenuSubButton>
-										</SidebarMenuSubItem>
+										<Collapsible
+											key="formas-investimento"
+											asChild
+											defaultOpen={false}
+											className="group/collapsible-nested"
+										>
+											<SidebarMenuSubItem>
+												<CollapsibleTrigger asChild>
+													<SidebarMenuSubButton className="select-none">
+														Formas de Investimento
+														<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible-nested:rotate-90" />
+													</SidebarMenuSubButton>
+												</CollapsibleTrigger>
+												<CollapsibleContent>
+													<SidebarMenuSub>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton asChild>
+																<Link to="/modulos/formas-investimento/acoes">
+																	Ações
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton asChild>
+																<Link to="/modulos/formas-investimento/bdrs">
+																	BDRs
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton asChild>
+																<Link to="/modulos/formas-investimento/etfs">
+																	ETFs
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton asChild>
+																<Link to="/modulos/formas-investimento/fiis">
+																	FIIs
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+														<SidebarMenuSubItem>
+															<SidebarMenuSubButton asChild>
+																<Link to="/modulos/formas-investimento/tesouro-direto">
+																	Tesouro Direto
+																</Link>
+															</SidebarMenuSubButton>
+														</SidebarMenuSubItem>
+													</SidebarMenuSub>
+												</CollapsibleContent>
+											</SidebarMenuSubItem>
+										</Collapsible>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
 												<Link to="#">Gestão de Ativos</Link>

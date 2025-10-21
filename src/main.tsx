@@ -6,10 +6,15 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { SidebarProvider } from "@/components/ui/sidebar.tsx";
 import App from "./app";
 import Account from "./app/pages/account";
+import Acoes from "./app/pages/acoes";
+import BDRs from "./app/pages/bdrs";
 import CalculadoraFinanceira from "./app/pages/calculadora-financeira";
 import ContinuarAprendendo from "./app/pages/continuar-aprendendo";
+import ETFs from "./app/pages/etfs";
+import FIIs from "./app/pages/fiis";
 import Home from "./app/pages/home";
 import TaxasJuros from "./app/pages/taxas-e-juros";
+import TesouroDireto from "./app/pages/tesouro-direto";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +49,26 @@ const router = createBrowserRouter([
 					{
 						path: "conceitos-basicos/negociacao-dividas",
 						Component: () => <div>Negociação de dívidas</div>,
+					},
+					{
+						path: "formas-investimento/acoes",
+						Component: Acoes,
+					},
+					{
+						path: "formas-investimento/bdrs",
+						Component: BDRs,
+					},
+					{
+						path: "formas-investimento/etfs",
+						Component: ETFs,
+					},
+					{
+						path: "formas-investimento/fiis",
+						Component: FIIs,
+					},
+					{
+						path: "formas-investimento/tesouro-direto",
+						Component: TesouroDireto,
 					},
 					{
 						path: "investimentos",

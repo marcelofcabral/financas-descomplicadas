@@ -5,6 +5,12 @@ import {
 	ExternalLink,
 	TrendingUp,
 } from "lucide-react";
+import {
+	ColoredBorderCard,
+	ExampleBox,
+} from "@/components/colored-border-card";
+import { FormulaCard } from "@/components/formula-card";
+import { InfoBoxCard } from "@/components/info-box-card";
 import Title from "@/components/title";
 import {
 	Card,
@@ -23,7 +29,6 @@ const TaxasJuros: React.FC = () => {
 					Entenda os fundamentos essenciais da educação financeira
 				</p>
 			</div>
-
 			{/* Juros Section */}
 			<section className="space-y-4">
 				<div className="flex items-center gap-3">
@@ -62,7 +67,6 @@ const TaxasJuros: React.FC = () => {
 					</CardContent>
 				</Card>
 			</section>
-
 			{/* Taxa de Juros */}
 			<section className="space-y-4">
 				<div className="flex items-center gap-3">
@@ -115,129 +119,71 @@ const TaxasJuros: React.FC = () => {
 				{/* Tipos de Juros */}
 				<div className="grid md:grid-cols-2 gap-4">
 					{/* Juros Simples */}
-					<Card className="border-l-4 border-l-success/40 border-y-0 border-r-0 shadow-sm">
-						<CardHeader>
-							<CardTitle className="text-success">
-								Taxa de Juros Simples
-							</CardTitle>
-						</CardHeader>
-						<CardContent className="space-y-4">
-							<p className="text-text text-sm leading-relaxed">
-								É a taxa cobrada/aplicada que é baseada sempre no capital
-								inicial investido/emprestado, ou seja,{" "}
-								<strong>não incide juros sobre juros</strong>.
-							</p>
-							<div className="bg-success/5 p-4 rounded-lg">
-								<p className="text-xs font-medium text-success mb-2">
-									Exemplo:
-								</p>
-								<p className="text-sm text-text">
-									Se um valor de R$ 1.000,00 é aplicado a uma taxa de 10% a.a
-									por dois anos, ao final o poupador/investidor receberá R$
-									100,00 do primeiro ano e R$ 100,00 do segundo, totalizando{" "}
-									<strong>R$ 1.200,00</strong>.
-								</p>
-							</div>
-							<div className="bg-background p-4 rounded-lg border border-border/40">
-								<p className="text-sm font-semibold text-primary mb-2">
-									Fórmula:
-								</p>
-								<code className="text-sm font-mono bg-muted px-3 py-2 rounded block">
-									J = C × i × t
-								</code>
-								<div className="mt-3 space-y-1 text-xs text-muted-foreground">
-									<p>
-										<strong>J</strong> = Juros simples
-									</p>
-									<p>
-										<strong>C</strong> = Capital inicial
-									</p>
-									<p>
-										<strong>i</strong> = Taxa de juros
-									</p>
-									<p>
-										<strong>t</strong> = Tempo da operação
-									</p>
-								</div>
-							</div>
-						</CardContent>
-					</Card>
+					<ColoredBorderCard title="Taxa de Juros Simples" color="success">
+						<p className="text-text text-sm leading-relaxed">
+							É a taxa cobrada/aplicada que é baseada sempre no capital inicial
+							investido/emprestado, ou seja,{" "}
+							<strong>não incide juros sobre juros</strong>.
+						</p>
+						<ExampleBox color="success">
+							Se um valor de R$ 1.000,00 é aplicado a uma taxa de 10% a.a por
+							dois anos, ao final o poupador/investidor receberá R$ 100,00 do
+							primeiro ano e R$ 100,00 do segundo, totalizando{" "}
+							<strong>R$ 1.200,00</strong>.
+						</ExampleBox>
+						<FormulaCard
+							formula="J = C × i × t"
+							variables={[
+								{ symbol: "J", description: "Juros simples" },
+								{ symbol: "C", description: "Capital inicial" },
+								{ symbol: "i", description: "Taxa de juros" },
+								{ symbol: "t", description: "Tempo da operação" },
+							]}
+						/>
+					</ColoredBorderCard>
 
 					{/* Juros Compostos */}
-					<Card className="border-l-4 border-l-warning/40 border-y-0 border-r-0 shadow-sm">
-						<CardHeader>
-							<CardTitle className="text-warning">
-								Taxa de Juros Composta
-							</CardTitle>
-						</CardHeader>
-						<CardContent className="space-y-4">
-							<p className="text-text text-sm leading-relaxed">
-								É a taxa cobrada/aplicada por um período determinado que é
-								somado a um novo capital ao decorrer do tempo -{" "}
-								<strong>juros sobre juros</strong>.
-							</p>
-							<div className="bg-warning/5 p-4 rounded-lg">
-								<p className="text-xs font-medium text-warning mb-2">
-									Exemplo:
-								</p>
-								<p className="text-sm text-text">
-									Se um valor de R$ 1.000,00 é aplicado a uma taxa de 10% a.a
-									por dois anos, no primeiro ano receberá R$ 100,00. No segundo
-									ano, receberá R$ 110,00 (juros sobre o novo capital de R$
-									1.100,00). Resultado: <strong>R$ 1.210,00</strong>.
-								</p>
-							</div>
-							<div className="bg-background p-4 rounded-lg border border-border/40">
-								<p className="text-sm font-semibold text-primary mb-2">
-									Fórmula:
-								</p>
-								<code className="text-sm font-mono bg-muted px-3 py-2 rounded block">
-									M = C × (1 + i)ⁿ
-								</code>
-								<div className="mt-3 space-y-1 text-xs text-muted-foreground">
-									<p>
-										<strong>M</strong> = Montante do dinheiro
-									</p>
-									<p>
-										<strong>C</strong> = Capital inicial
-									</p>
-									<p>
-										<strong>i</strong> = Taxa de juros
-									</p>
-									<p>
-										<strong>n</strong> = Períodos decorridos
-									</p>
-								</div>
-							</div>
-						</CardContent>
-					</Card>
-				</div>
-
-				{/* Juros Real */}
-				<Card className="border-l-4 border-l-accent/40 border-y-0 border-r-0 shadow-sm">
-					<CardHeader>
-						<CardTitle className="text-accent">Taxa de Juros Real</CardTitle>
-					</CardHeader>
-					<CardContent className="space-y-4">
-						<p className="text-text leading-relaxed">
-							É a taxa de juros nominal de determinada transação{" "}
-							<strong>descontada da inflação</strong>.
+					<ColoredBorderCard title="Taxa de Juros Composta" color="warning">
+						<p className="text-text text-sm leading-relaxed">
+							É a taxa cobrada/aplicada por um período determinado que é somado
+							a um novo capital ao decorrer do tempo -{" "}
+							<strong>juros sobre juros</strong>.
 						</p>
-						<div className="bg-accent/5 p-4 rounded-lg">
-							<p className="text-sm font-medium text-accent mb-2">Exemplo:</p>
-							<p className="text-text text-sm">
-								Uma taxa de juros nominal de <strong>10%</strong> descontada de
-								uma inflação de <strong>2%</strong>, resultam em uma taxa de
-								juros real de <strong className="text-primary">7,84%</strong>.
-							</p>
-							<code className="text-xs font-mono bg-background px-2 py-1 rounded mt-2 inline-block">
-								Fórmula: (1,10 / 1,02 - 1) × 100
-							</code>
-						</div>
-					</CardContent>
-				</Card>
-			</section>
-
+						<ExampleBox color="warning">
+							Se um valor de R$ 1.000,00 é aplicado a uma taxa de 10% a.a por
+							dois anos, no primeiro ano receberá R$ 100,00. No segundo ano,
+							receberá R$ 110,00 (juros sobre o novo capital de R$ 1.100,00).
+							Resultado: <strong>R$ 1.210,00</strong>.
+						</ExampleBox>
+						<FormulaCard
+							formula="M = C × (1 + i)ⁿ"
+							variables={[
+								{ symbol: "M", description: "Montante do dinheiro" },
+								{ symbol: "C", description: "Capital inicial" },
+								{ symbol: "i", description: "Taxa de juros" },
+								{ symbol: "n", description: "Períodos decorridos" },
+							]}
+						/>
+					</ColoredBorderCard>
+				</div>
+				{/* Juros Real */}
+				<ColoredBorderCard title="Taxa de Juros Real" color="accent">
+					<p className="text-text leading-relaxed">
+						É a taxa de juros nominal de determinada transação{" "}
+						<strong>descontada da inflação</strong>.
+					</p>
+					<ExampleBox color="accent">
+						<p className="mb-2">
+							Uma taxa de juros nominal de <strong>10%</strong> descontada de
+							uma inflação de <strong>2%</strong>, resultam em uma taxa de juros
+							real de <strong className="text-primary">7,84%</strong>.
+						</p>
+						<code className="text-xs font-mono bg-background px-2 py-1 rounded">
+							Fórmula: (1,10 / 1,02 - 1) × 100
+						</code>
+					</ExampleBox>
+				</ColoredBorderCard>
+			</section>{" "}
 			{/* Taxa Selic */}
 			<section className="space-y-4">
 				<div className="flex items-center gap-3">
@@ -274,7 +220,6 @@ const TaxasJuros: React.FC = () => {
 					</CardContent>
 				</Card>
 			</section>
-
 			{/* Inflação */}
 			<section className="space-y-4">
 				<div className="flex items-center gap-3">
@@ -305,66 +250,54 @@ const TaxasJuros: React.FC = () => {
 							ao consumidor, índices de preços ao produtor, índices de custos de
 							produção, etc, a depender do objetivo.
 						</p>
-						<div className="bg-warning/5 p-4 rounded-lg border-l-4 border-warning/40">
-							<p className="text-sm text-text">
-								💡 <strong>Importante:</strong> Mesmo índices de preços ao
-								consumidor podem diferir entre si, pois cada família tem sua
-								própria cesta de consumo. Pode haver, por isso, percepções
-								distintas entre o que o cidadão vê no seu orçamento e o que
-								aparece em um dado índice.
-							</p>
-						</div>
+						<InfoBoxCard color="warning" borderColor="warning" titleIcon="💡">
+							<strong>Importante:</strong> Mesmo índices de preços ao consumidor
+							podem diferir entre si, pois cada família tem sua própria cesta de
+							consumo. Pode haver, por isso, percepções distintas entre o que o
+							cidadão vê no seu orçamento e o que aparece em um dado índice.
+						</InfoBoxCard>
 					</CardContent>
 				</Card>
 
 				{/* IPCA */}
-				<Card className="border-l-4 border-l-primary/40 border-y-0 border-r-0 shadow-sm">
-					<CardHeader>
-						<CardTitle className="text-primary">
-							IPCA - Índice Nacional de Preços ao Consumidor Amplo
-						</CardTitle>
-					</CardHeader>
-					<CardContent className="space-y-4">
-						<p className="text-text leading-relaxed">
-							O IPCA é calculado pelo{" "}
-							<strong>
-								Instituto Brasileiro de Geografia e Estatística (IBGE)
-							</strong>
-							, com coleta, em geral, do dia 1 a 30 do mês de referência. O IPCA
-							é o{" "}
-							<strong>
-								índice de referência do sistema de metas para a inflação
-							</strong>
-							.
+				<ColoredBorderCard
+					title="IPCA - Índice Nacional de Preços ao Consumidor Amplo"
+					color="primary"
+				>
+					<p className="text-text leading-relaxed">
+						O IPCA é calculado pelo{" "}
+						<strong>
+							Instituto Brasileiro de Geografia e Estatística (IBGE)
+						</strong>
+						, com coleta, em geral, do dia 1 a 30 do mês de referência. O IPCA é
+						o{" "}
+						<strong>
+							índice de referência do sistema de metas para a inflação
+						</strong>
+						.
+					</p>
+					<InfoBoxCard color="primary" title="Abrangência:">
+						<p className="mb-2">
+							O IPCA mede o preço de uma cesta de consumo representativa para
+							famílias com renda de
+							<strong> 1 a 40 salários mínimos</strong>, em 16 áreas geográficas
+							(regiões metropolitanas de Belém, Fortaleza, Recife, Salvador,
+							Belo Horizonte, Vitória, Rio de Janeiro, São Paulo, Curitiba,
+							Porto Alegre, além do Distrito Federal e dos municípios de de
+							Goiânia, Campo Grande, Rio Branco, São Luís e Aracaju).
 						</p>
-						<div className="bg-primary/5 p-4 rounded-lg">
-							<p className="text-sm font-medium text-primary mb-2">
-								Abrangência:
-							</p>
-							<p className="text-sm text-text mb-2">
-								O IPCA mede o preço de uma cesta de consumo representativa para
-								famílias com renda de
-								<strong> 1 a 40 salários mínimos</strong>, em 16 áreas
-								geográficas (regiões metropolitanas de Belém, Fortaleza, Recife,
-								Salvador, Belo Horizonte, Vitória, Rio de Janeiro, São Paulo,
-								Curitiba, Porto Alegre, além do Distrito Federal e dos
-								municípios de de Goiânia, Campo Grande, Rio Branco, São Luís e
-								Aracaju).
-							</p>
-						</div>
-						<div className="bg-muted/50 p-4 rounded-lg">
-							<p className="text-sm text-text">
-								O Banco Central trabalha para que a inflação acumulada em doze
-								meses, medida pelo IPCA, se situe em torno do centro da meta
-								definida pelo <strong>Conselho Monetário Nacional (CMN)</strong>
-								. O IPCA também é indexador para títulos do tesouro direto e
-								renda fixa.
-							</p>
-						</div>
-					</CardContent>
-				</Card>
+					</InfoBoxCard>
+					<InfoBoxCard color="muted">
+						<p>
+							O Banco Central trabalha para que a inflação acumulada em doze
+							meses, medida pelo IPCA, se situe em torno do centro da meta
+							definida pelo <strong>Conselho Monetário Nacional (CMN)</strong>.
+							O IPCA também é indexador para títulos do tesouro direto e renda
+							fixa.
+						</p>
+					</InfoBoxCard>
+				</ColoredBorderCard>
 			</section>
-
 			{/* Recursos Adicionais */}
 			<section className="space-y-4">
 				<div className="flex items-center gap-3">
