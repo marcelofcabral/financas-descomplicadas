@@ -44,7 +44,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			className="bg-background text-text border-border truncate"
 		>
 			<SidebarHeader className="border-b border-border">
-				<Link to="/">
+				<Link to="/financas-descomplicadas/">
 					<div className="flex items-center gap-3">
 						<div className="flex min-h-8 min-w-8 items-center justify-center rounded-lg bg-primary">
 							<DollarSign className="h-5 w-5 text-white" />
@@ -62,7 +62,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 					<SidebarMenu>
 						<SidebarMenuItem key="continuar-aprendendo">
 							<SidebarMenuButton asChild>
-								<Link to="/continuar-aprendendo">
+								<Link to="/financas-descomplicadas/continuar-aprendendo">
 									<BookOpen />
 									<span>Continuar Aprendendo</span>
 								</Link>
@@ -101,7 +101,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 													<SidebarMenuSub>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
-																<Link to="/modulos/conceitos-basicos/taxas-e-juros">
+																<Link to="/financas-descomplicadas/modulos/conceitos-basicos/taxas-e-juros">
 																	Taxas e Juros
 																</Link>
 															</SidebarMenuSubButton>
@@ -112,7 +112,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 																className="h-auto py-2"
 															>
 																<Link
-																	to="/modulos/conceitos-basicos/gerenciar-dinheiro"
+																	to="/financas-descomplicadas/modulos/conceitos-basicos/gerenciar-dinheiro"
 																	className="whitespace-normal break-words leading-tight"
 																>
 																	Como gerenciar seu dinheiro
@@ -125,7 +125,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 																className="h-auto py-2"
 															>
 																<Link
-																	to="/modulos/conceitos-basicos/negociacao-dividas"
+																	to="/financas-descomplicadas/modulos/conceitos-basicos/negociacao-dividas"
 																	className="whitespace-normal break-words leading-tight"
 																>
 																	Negociação de dívidas
@@ -158,35 +158,35 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 													<SidebarMenuSub>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
-																<Link to="/modulos/formas-investimento/acoes">
+																<Link to="/financas-descomplicadas/modulos/formas-investimento/acoes">
 																	Ações
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
-																<Link to="/modulos/formas-investimento/bdrs">
+																<Link to="/financas-descomplicadas/modulos/formas-investimento/bdrs">
 																	BDRs
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
-																<Link to="/modulos/formas-investimento/etfs">
+																<Link to="/financas-descomplicadas/modulos/formas-investimento/etfs">
 																	ETFs
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
-																<Link to="/modulos/formas-investimento/fiis">
+																<Link to="/financas-descomplicadas/modulos/formas-investimento/fiis">
 																	FIIs
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
-																<Link to="/modulos/formas-investimento/tesouro-direto">
+																<Link to="/financas-descomplicadas/modulos/formas-investimento/tesouro-direto">
 																	Tesouro Direto
 																</Link>
 															</SidebarMenuSubButton>

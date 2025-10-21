@@ -105,7 +105,7 @@ export function NavUser({
 				) : (
 					<>
 						<SidebarMenuButton size="lg" asChild className="flex-8">
-							<Link to="/account">
+							<Link to="/financas-descomplicadas/account">
 								<Avatar className="h-8 w-8 rounded-lg">
 									<AvatarImage src={user.avatar} alt={user.name} />
 									<AvatarFallback className="rounded-lg">
