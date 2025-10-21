@@ -5,26 +5,17 @@ import {
 	Calculator,
 	ChevronRight,
 	DollarSign,
-	GraduationCap,
 	LibraryBig,
-	LineChart,
-	PieChart,
-	Settings2,
-	TrendingUp,
-	Wallet,
 } from "lucide-react";
 import type * as React from "react";
 import { Link } from "react-router";
 
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
 import {
 	Sidebar,
 	SidebarContent,
 	SidebarFooter,
 	SidebarGroup,
-	SidebarGroupLabel,
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
