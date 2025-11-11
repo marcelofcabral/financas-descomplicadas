@@ -1,4 +1,13 @@
-import { Award, Building2, Sparkles, TrendingUp } from "lucide-react";
+import {
+	AlertTriangle,
+	Award,
+	Building2,
+	CheckCircle2,
+	Lightbulb,
+	Sparkles,
+	Target,
+	TrendingUp,
+} from "lucide-react";
 import { ColoredBorderCard } from "@/components/colored-border-card";
 import { InfoBoxCard } from "@/components/info-box-card";
 import Title from "@/components/title";
@@ -318,6 +327,464 @@ const Acoes: React.FC = () => {
 						<Table />
 					</CardContent>
 				</Card>
+			</section>
+
+			{/* Como Começar a Investir */}
+			<section className="space-y-4">
+				<div className="flex items-center gap-3">
+					<div className="bg-primary/10 text-primary p-3 rounded-lg">
+						<Target className="w-6 h-6" />
+					</div>
+					<Title variant="h2">Como começar a investir em ações</Title>
+				</div>
+
+				<InfoBoxCard
+					color="warning"
+					borderColor="warning"
+					titleIcon="⚠️"
+					title="Lembre-se sempre..."
+				>
+					<p className="text-text leading-relaxed">
+						Ações são para <strong>longo prazo</strong>. Sempre utilize valores
+						que podem ficar "presos", e não necessite de resgate no curto prazo.
+						O mercado de renda variável pode tanto valorizar quanto
+						desvalorizar, por isso, estude bem as empresas, se são empresas
+						lucrativas, estude o mercado no qual a empresa está inserida,
+						acompanhe e analise os balanços que são disponibilizados de forma
+						trimestral.
+					</p>
+				</InfoBoxCard>
+
+				<div className="space-y-4">
+					{/* Passo 1 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									1
+								</div>
+								<div>
+									<CardTitle>
+										Defina seus objetivos e perfil de investidor
+									</CardTitle>
+									<CardDescription>
+										Entenda suas metas e tolerância ao risco
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Estabeleça metas claras: para que você está investindo
+										(aposentadoria, compra de imóvel, geração de renda,
+										independência financeira, etc.)
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Verifique seu horizonte de tempo (curto, médio ou longo
+										prazo) e sua tolerância ao risco (ações são renda variável,
+										variam tanto para mais, quanto para menos)
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Entenda a importância de manter uma reserva de emergência
+										antes de investir montantes maiores em ações
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+
+					{/* Passo 2 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-secondary text-secondary-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									2
+								</div>
+								<div>
+									<CardTitle>Organize sua situação financeira</CardTitle>
+									<CardDescription>
+										Estabilidade financeira é fundamental
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent className="space-y-4">
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Quite ou controle dívidas de altos juros, pois investir em
+										ações com juros altos correndo não costuma fazer sentido
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Garanta que suas finanças pessoais estejam equilibradas:
+										fluxo de caixa, gastos controlados, reserva de emergência
+										estabelecida
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Determine quanto você pode investir regularmente, sem
+										comprometer seu padrão de vida
+									</span>
+								</li>
+							</ul>
+							<InfoBoxCard color="warning" borderColor="warning" titleIcon="🚫">
+								<strong>Importante:</strong> Não faça dívidas para investir em
+								ações.
+							</InfoBoxCard>
+						</CardContent>
+					</Card>
+
+					{/* Passo 3 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-accent text-accent-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									3
+								</div>
+								<div>
+									<CardTitle>Escolha uma corretora ou intermediário</CardTitle>
+									<CardDescription>
+										Selecione uma plataforma confiável e regulada
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										No Brasil, selecione uma corretora regulada pela Comissão de
+										Valores Mobiliários (CVM)
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Compare taxas, plataforma de negociação, qualidade do
+										atendimento, ferramentas de análise disponíveis. Dê
+										preferência às corretoras que não cobram taxas de corretagem
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Abra sua conta: inclua preenchimento de questionário de
+										perfil de investidor, envio de documentos, ativação da conta
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+
+					{/* Passo 4 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-success text-success-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									4
+								</div>
+								<div>
+									<CardTitle>Transfira os recursos para a corretora</CardTitle>
+									<CardDescription>
+										Comece com o que é confortável
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Após aprovação da corretora, deposite fundos via
+										transferência bancária, PIX ou outro método disponível
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Determine um valor que você se sente confortável em
+										investir. Pode começar pequeno e aumentar gradualmente
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+
+					{/* Passo 5 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									5
+								</div>
+								<div>
+									<CardTitle>Eduque-se sobre investimentos em ações</CardTitle>
+									<CardDescription>
+										Conhecimento é fundamental para o sucesso
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent className="space-y-4">
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Entenda conceitos básicos: o que são ações, como funciona
+										uma bolsa de valores, o que significa dividendos,
+										valorização, risco, liquidez
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Aprenda sobre análise de empresas (fundamentalista) e
+										análise de mercado, bem como estratégias de diversificação
+									</span>
+								</li>
+							</ul>
+							<InfoBoxCard color="warning" borderColor="warning" titleIcon="⚠️">
+								Evite entrar "de cabeça" sem conhecer o que está fazendo —
+								especialmente não "apostar" tudo em uma única ação sem avaliar.
+							</InfoBoxCard>
+						</CardContent>
+					</Card>
+
+					{/* Passo 6 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-secondary text-secondary-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									6
+								</div>
+								<div>
+									<CardTitle>Defina sua estratégia de investimento</CardTitle>
+									<CardDescription>
+										Escolha uma abordagem alinhada aos seus objetivos
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Você vai comprar empresas individuais, ETFs ou fundos de
+										ações? Qual será o seu critério de seleção?
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Determine se você vai investir de forma ativa (escolhendo
+										ações) ou passiva (por meio de ETFs ou fundos)
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Aplique o método de "dollar-cost averaging" (investir um
+										valor fixo periodicamente) para reduzir risco de "acertar o
+										timing" errado
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+
+					{/* Passo 7 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-accent text-accent-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									7
+								</div>
+								<div>
+									<CardTitle>Escolha as ações ou ativos para começar</CardTitle>
+									<CardDescription>
+										Análise cuidadosa é essencial
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Para iniciantes, pode fazer sentido começar com empresas
+										mais consolidadas ou ETFs que proporcionem diversificação
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Analise empresa por empresa: negócios, setor, perspectivas,
+										balanço financeiro, endividamento, vantagens competitivas
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Avalie também riscos: mercado, setor, regulatórios,
+										macroeconômicos
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+
+					{/* Passo 8 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-success text-success-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									8
+								</div>
+								<div>
+									<CardTitle>Realize sua primeira compra</CardTitle>
+									<CardDescription>
+										Execute sua estratégia com atenção
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										No sistema da corretora, localize o ativo, defina quantas
+										ações ou valor investir, escolha tipo de ordem (ex: ordem a
+										mercado, limite)
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Revise taxas envolvidas, custos de corretagem, impostos na
+										venda ou dividendos (no Brasil existem regras específicas)
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+
+					{/* Passo 9 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									9
+								</div>
+								<div>
+									<CardTitle>
+										Monitore e revise seu portfólio regularmente
+									</CardTitle>
+									<CardDescription>
+										Acompanhamento constante é importante
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Verifique periodicamente se as empresas ainda se mantêm com
+										fundamentos sólidos, se a alocação está de acordo com seus
+										objetivos
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Rebalanceie se necessário (realocar entre ativos para manter
+										o perfil de risco)
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Não reaja de forma exagerada a oscilações de curto prazo —
+										manter o foco no longo prazo geralmente traz melhores
+										resultados
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+
+					{/* Passo 10 */}
+					<Card className="border-border/40 shadow-sm">
+						<CardHeader>
+							<div className="flex items-start gap-3">
+								<div className="bg-warning text-warning-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+									10
+								</div>
+								<div>
+									<CardTitle>
+										Evite erros comuns e mantenha disciplina
+									</CardTitle>
+									<CardDescription>
+										Consistência é chave para o sucesso
+									</CardDescription>
+								</div>
+							</div>
+						</CardHeader>
+						<CardContent className="space-y-4">
+							<ul className="space-y-2">
+								<li className="flex gap-2 items-start">
+									<AlertTriangle className="w-5 h-5 text-warning mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Evite "seguir o hype" sem analisar — investir apenas porque
+										"todo mundo está fazendo" pode levar a perdas
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<AlertTriangle className="w-5 h-5 text-warning mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Cuidado com investir dinheiro que você pode precisar em
+										curto prazo
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<AlertTriangle className="w-5 h-5 text-warning mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Mantenha custos baixos, entenda impostos, taxas e custos de
+										corretagem
+									</span>
+								</li>
+								<li className="flex gap-2 items-start">
+									<Lightbulb className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+									<span className="text-text leading-relaxed">
+										Mantenha a educação continuada: o mercado muda, novas
+										estratégias surgem, esteja sempre aprendendo
+									</span>
+								</li>
+							</ul>
+						</CardContent>
+					</Card>
+				</div>
 			</section>
 		</div>
 	);

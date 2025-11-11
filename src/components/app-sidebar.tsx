@@ -138,7 +138,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 										</Collapsible>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<Link to="#">Reserva de Emergência</Link>
+												<Link to="/financas-descomplicadas/modulos/conceitos-basicos/reserva-emergencia">
+													Reserva de Emergência
+												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<Collapsible

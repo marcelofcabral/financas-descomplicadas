@@ -12,7 +12,10 @@ import CalculadoraFinanceira from "./app/pages/calculadora-financeira";
 import ContinuarAprendendo from "./app/pages/continuar-aprendendo";
 import ETFs from "./app/pages/etfs";
 import FIIs from "./app/pages/fiis";
+import GerenciarDinheiro from "./app/pages/gerenciar-dinheiro";
 import Home from "./app/pages/home";
+import NegociacaoDividas from "./app/pages/negociacao-dividas";
+import ReservaEmergencia from "./app/pages/reserva-emergencia";
 import TaxasJuros from "./app/pages/taxas-e-juros";
 import TesouroDireto from "./app/pages/tesouro-direto";
 
@@ -44,11 +47,15 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "conceitos-basicos/gerenciar-dinheiro",
-						Component: () => <div>Como gerenciar seu dinheiro</div>,
+						Component: GerenciarDinheiro,
 					},
 					{
 						path: "conceitos-basicos/negociacao-dividas",
-						Component: () => <div>Negociação de dívidas</div>,
+						Component: NegociacaoDividas,
+					},
+					{
+						path: "conceitos-basicos/reserva-emergencia",
+						Component: ReservaEmergencia,
 					},
 					{
 						path: "formas-investimento/acoes",
@@ -84,7 +91,10 @@ const router = createBrowserRouter([
 	},
 ]);
 
-createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Root element not found");
+
+createRoot(rootElement).render(
 	<StrictMode>
 		<SidebarProvider>
 			<QueryClientProvider client={queryClient}>
