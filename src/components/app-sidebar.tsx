@@ -224,32 +224,44 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 									<SidebarMenuSub>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<Link to="#">Juros Compostos</Link>
+												<Link to="/financas-descomplicadas/calculadora-financeira/juros-compostos">
+													Juros Compostos
+												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<Link to="#">Financiamento</Link>
+												<Link to="/financas-descomplicadas/calculadora-financeira/financiamento">
+													Financiamento
+												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<Link to="#">Empréstimo</Link>
+												<Link to="/financas-descomplicadas/calculadora-financeira/emprestimo">
+													Empréstimo
+												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<Link to="#">Aposentadoria</Link>
+												<Link to="/financas-descomplicadas/calculadora-financeira/aposentadoria">
+													Aposentadoria
+												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<Link to="#">Rentabilidade</Link>
+												<Link to="/financas-descomplicadas/calculadora-financeira/rentabilidade">
+													Rentabilidade
+												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
-												<Link to="#">ROI</Link>
+												<Link to="/financas-descomplicadas/calculadora-financeira/roi">
+													ROI
+												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 									</SidebarMenuSub>

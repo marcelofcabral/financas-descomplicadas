@@ -7,15 +7,21 @@ import { SidebarProvider } from "@/components/ui/sidebar.tsx";
 import App from "./app";
 import Account from "./app/pages/account";
 import Acoes from "./app/pages/acoes";
+import Aposentadoria from "./app/pages/aposentadoria";
 import BDRs from "./app/pages/bdrs";
 import CalculadoraFinanceira from "./app/pages/calculadora-financeira";
 import ContinuarAprendendo from "./app/pages/continuar-aprendendo";
+import Emprestimo from "./app/pages/emprestimo";
 import ETFs from "./app/pages/etfs";
 import FIIs from "./app/pages/fiis";
+import Financiamento from "./app/pages/financiamento";
 import GerenciarDinheiro from "./app/pages/gerenciar-dinheiro";
 import Home from "./app/pages/home";
+import JurosCompostos from "./app/pages/juros-compostos";
 import NegociacaoDividas from "./app/pages/negociacao-dividas";
+import Rentabilidade from "./app/pages/rentabilidade";
 import ReservaEmergencia from "./app/pages/reserva-emergencia";
+import ROI from "./app/pages/roi";
 import TaxasJuros from "./app/pages/taxas-e-juros";
 import TesouroDireto from "./app/pages/tesouro-direto";
 
@@ -85,7 +91,32 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "calculadora-financeira",
-				Component: CalculadoraFinanceira,
+				children: [
+					{
+						path: "juros-compostos",
+						Component: JurosCompostos,
+					},
+					{
+						path: "financiamento",
+						Component: Financiamento,
+					},
+					{
+						path: "emprestimo",
+						Component: Emprestimo,
+					},
+					{
+						path: "aposentadoria",
+						Component: Aposentadoria,
+					},
+					{
+						path: "rentabilidade",
+						Component: Rentabilidade,
+					},
+					{
+						path: "roi",
+						Component: ROI,
+					},
+				],
 			},
 		],
 	},
