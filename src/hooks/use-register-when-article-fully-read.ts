@@ -34,17 +34,31 @@ const useRegisterWhenArticleFullyRead = () => {
 			mutationPromises.push(insertArticleCompletion(articleId));
 
 			if (data.next_article === articleId) {
-				const nextArticleIdx =
-					(SUGGESTED_ARTICLE_ORDER.indexOf(articleId) + 1) %
-					SUGGESTED_ARTICLE_ORDER.length;
+				if (articleId !== "tesouro-direto") {
+					let nextArticleIdx =
+						(SUGGESTED_ARTICLE_ORDER.indexOf(articleId) + 1) %
+						SUGGESTED_ARTICLE_ORDER.length;
 
-				const nextArticleId = SUGGESTED_ARTICLE_ORDER[nextArticleIdx];
+					while (
+						data?.user_article_completions.find(
+							({ article_id }) =>
+								article_id === SUGGESTED_ARTICLE_ORDER[nextArticleIdx],
+						)
+					) {
+						nextArticleIdx =
+							(nextArticleIdx + 1) % SUGGESTED_ARTICLE_ORDER.length;
+					}
 
-				mutationPromises.push(updateNextArticle(nextArticleId));
+					const nextArticleId = SUGGESTED_ARTICLE_ORDER[nextArticleIdx];
+
+					mutationPromises.push(updateNextArticle(nextArticleId));
+				} else {
+					mutationPromises.push(updateNextArticle("taxas-e-juros"));
+				}
 			}
 
 			await Promise.all(mutationPromises);
-			await queryClient.invalidateQueries({ queryKey: ["userData"] });
+			queryClient.invalidateQueries({ queryKey: ["userData"] });
 		}
 	}, [articleId, data]);
 
