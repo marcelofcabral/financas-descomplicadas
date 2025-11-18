@@ -7,6 +7,14 @@ import { ARTICLE_ID_TO_TITLE_MAP } from "@/utils/constants";
 const ContinuarAprendendo: React.FC = () => {
 	const { data: userData } = useUserDataQuery();
 
+	const isFormasInvestimento = [
+		"acoes",
+		"bdrs",
+		"etfs",
+		"fiis",
+		"tesouro-direto",
+	].includes(userData?.next_article || "");
+
 	return (
 		<div className="space-y-8">
 			<div className="space-y-2">
@@ -31,7 +39,7 @@ const ContinuarAprendendo: React.FC = () => {
 			</p>
 
 			<Link
-				to={`/financas-descomplicadas/modulos/conceitos-basicos/${userData?.next_article || "taxas-e-juros"}`}
+				to={`/financas-descomplicadas/modulos/${isFormasInvestimento ? "formas-investimento" : "conceitos-basicos"}/${userData?.next_article || "taxas-e-juros"}`}
 				className="flex items-center gap-2 p-3 rounded-lg border border-border/80 hover:border-primary hover:bg-primary/5 transition-all justify-center text-xl font-medium mx-auto w-[30%] text-center"
 			>
 				<span className="text-text">
