@@ -1,5 +1,7 @@
 import { LogOut, Mail, User } from "lucide-react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router";
+import ReadingProgress from "@/components/reading-progress";
 import Title from "@/components/title";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -10,11 +12,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { Spinner } from "@/components/ui/spinner";
 import {
 	useLogoutUserMutation,
 	useUserDataQuery,
 } from "@/features/auth/api/login";
+import { NUMBER_OF_ARTICLES } from "@/utils/constants";
 
 const getInitials = (name: string) => {
 	return name
@@ -83,6 +87,9 @@ const Account: React.FC = () => {
 				</CardHeader>
 			</Card>
 
+			<Title variant="h3">Progresso de Leitura</Title>
+			<ReadingProgress />
+
 			{/* Account Details */}
 			<Card className="border-border/40 shadow-sm">
 				<CardHeader>
@@ -126,12 +133,6 @@ const Account: React.FC = () => {
 
 			{/* Actions */}
 			<Card className="border-error/10 shadow-sm">
-				<CardHeader>
-					<CardTitle className="text-error">Zona de Perigo</CardTitle>
-					<CardDescription>
-						Ações irreversíveis relacionadas à sua conta
-					</CardDescription>
-				</CardHeader>
 				<CardContent>
 					<Button
 						variant="destructive"

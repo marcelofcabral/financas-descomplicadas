@@ -19,8 +19,11 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import useRegisterWhenArticleFullyRead from "@/hooks/use-register-when-article-fully-read";
 
 const NegociacaoDividas: React.FC = () => {
+	useRegisterWhenArticleFullyRead();
+
 	return (
 		<div className="space-y-12">
 			{/* Introdução */}

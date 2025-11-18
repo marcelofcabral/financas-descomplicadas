@@ -9,7 +9,6 @@ import Account from "./app/pages/account";
 import Acoes from "./app/pages/acoes";
 import Aposentadoria from "./app/pages/aposentadoria";
 import BDRs from "./app/pages/bdrs";
-import CalculadoraFinanceira from "./app/pages/calculadora-financeira";
 import ContinuarAprendendo from "./app/pages/continuar-aprendendo";
 import Emprestimo from "./app/pages/emprestimo";
 import ETFs from "./app/pages/etfs";
@@ -82,10 +81,6 @@ const router = createBrowserRouter([
 					{
 						path: "formas-investimento/tesouro-direto",
 						Component: TesouroDireto,
-					},
-					{
-						path: "investimentos",
-						Component: () => <div>Investimentos</div>,
 					},
 				],
 			},

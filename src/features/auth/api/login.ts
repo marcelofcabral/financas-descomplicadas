@@ -17,9 +17,11 @@ const fetchUserData = async () => {
 	if (data.user?.id) {
 		const { data: userData } = await supabase
 			.from("users")
-			.select("*")
+			.select("*, user_article_completions(article_id)")
 			.eq("id", data.user.id)
 			.single();
+
+		console.log("userData:", userData);
 
 		return userData;
 	}

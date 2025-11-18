@@ -3,6 +3,7 @@
 import {
 	BookOpen,
 	Calculator,
+	CheckCircle,
 	ChevronRight,
 	DollarSign,
 	LibraryBig,
@@ -33,6 +34,18 @@ import {
 	CollapsibleTrigger,
 } from "./ui/collapsible";
 import { Spinner } from "./ui/spinner";
+
+const hasUserFullyReadArticle = (
+	userData: ReturnType<typeof useUserDataQuery>["data"],
+	articleId: string,
+) =>
+	userData?.user_article_completions.some(
+		(completion) => completion.article_id === articleId,
+	);
+
+const CheckIcon = (
+	<CheckCircle className="inline-block ml-0.5 w-4 h-4 text-green-500" />
+);
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const { data: user, isLoading } = useUserDataQuery();
@@ -102,7 +115,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
 																<Link to="/financas-descomplicadas/modulos/conceitos-basicos/taxas-e-juros">
-																	Taxas e Juros
+																	Taxas e Juros{" "}
+																	{hasUserFullyReadArticle(
+																		user,
+																		"taxas-e-juros",
+																	) && CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
@@ -115,7 +132,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 																	to="/financas-descomplicadas/modulos/conceitos-basicos/gerenciar-dinheiro"
 																	className="whitespace-normal break-words leading-tight"
 																>
-																	Como gerenciar seu dinheiro
+																	Como gerenciar seu dinheiro{" "}
+																	{hasUserFullyReadArticle(
+																		user,
+																		"gerenciar-dinheiro",
+																	) && CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
@@ -128,7 +149,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 																	to="/financas-descomplicadas/modulos/conceitos-basicos/negociacao-dividas"
 																	className="whitespace-normal break-words leading-tight"
 																>
-																	Negociação de dívidas
+																	Negociação de dívidas{" "}
+																	{hasUserFullyReadArticle(
+																		user,
+																		"negociacao-dividas",
+																	) && CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
@@ -139,7 +164,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 										<SidebarMenuSubItem>
 											<SidebarMenuSubButton asChild>
 												<Link to="/financas-descomplicadas/modulos/conceitos-basicos/reserva-emergencia">
-													Reserva de Emergência
+													Reserva de Emergência{" "}
+													{hasUserFullyReadArticle(
+														user,
+														"reserva-emergencia",
+													) && CheckIcon}
 												</Link>
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
@@ -161,35 +190,47 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
 																<Link to="/financas-descomplicadas/modulos/formas-investimento/acoes">
-																	Ações
+																	Ações{" "}
+																	{hasUserFullyReadArticle(user, "acoes") &&
+																		CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
 																<Link to="/financas-descomplicadas/modulos/formas-investimento/bdrs">
-																	BDRs
+																	BDRs{" "}
+																	{hasUserFullyReadArticle(user, "bdrs") &&
+																		CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
 																<Link to="/financas-descomplicadas/modulos/formas-investimento/etfs">
-																	ETFs
+																	ETFs{" "}
+																	{hasUserFullyReadArticle(user, "etfs") &&
+																		CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
 																<Link to="/financas-descomplicadas/modulos/formas-investimento/fiis">
-																	FIIs
+																	FIIs{" "}
+																	{hasUserFullyReadArticle(user, "fiis") &&
+																		CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 														<SidebarMenuSubItem>
 															<SidebarMenuSubButton asChild>
 																<Link to="/financas-descomplicadas/modulos/formas-investimento/tesouro-direto">
-																	Tesouro Direto
+																	Tesouro Direto{" "}
+																	{hasUserFullyReadArticle(
+																		user,
+																		"tesouro-direto",
+																	) && CheckIcon}
 																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
@@ -197,11 +238,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 												</CollapsibleContent>
 											</SidebarMenuSubItem>
 										</Collapsible>
-										<SidebarMenuSubItem>
-											<SidebarMenuSubButton asChild>
-												<Link to="#">Gestão de Ativos</Link>
-											</SidebarMenuSubButton>
-										</SidebarMenuSubItem>
 									</SidebarMenuSub>
 								</CollapsibleContent>
 							</SidebarMenuItem>
