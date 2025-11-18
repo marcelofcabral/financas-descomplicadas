@@ -7,7 +7,7 @@ const useOnPageEndReached = (onPageEndReached: () => void) => {
 			const { scrollTop, clientHeight, scrollHeight } =
 				document.documentElement;
 
-			if (Math.abs(scrollHeight - (scrollTop + clientHeight)) <= 10) {
+			if (Math.abs(scrollHeight - (scrollTop + clientHeight)) === 0) {
 				onPageEndReached();
 			}
 		};

@@ -44,13 +44,6 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "user_module_completions_module_id_fkey"
-            columns: ["article_id"]
-            isOneToOne: false
-            referencedRelation: "modules"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "user_module_completions_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
@@ -99,6 +92,7 @@ export type Database = {
           full_name: string
           id: string
           investor_profile: Database["public"]["Enums"]["investor_profile"]
+          next_article: string | null
         }
         Insert: {
           avatar_url?: string | null
@@ -106,6 +100,7 @@ export type Database = {
           full_name: string
           id?: string
           investor_profile?: Database["public"]["Enums"]["investor_profile"]
+          next_article?: string | null
         }
         Update: {
           avatar_url?: string | null
@@ -113,6 +108,7 @@ export type Database = {
           full_name?: string
           id?: string
           investor_profile?: Database["public"]["Enums"]["investor_profile"]
+          next_article?: string | null
         }
         Relationships: []
       }

@@ -1,5 +1,4 @@
 import { LogOut, Mail, User } from "lucide-react";
-import { useMemo } from "react";
 import { useNavigate } from "react-router";
 import ReadingProgress from "@/components/reading-progress";
 import Title from "@/components/title";
@@ -12,13 +11,11 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Spinner } from "@/components/ui/spinner";
 import {
 	useLogoutUserMutation,
 	useUserDataQuery,
 } from "@/features/auth/api/login";
-import { NUMBER_OF_ARTICLES } from "@/utils/constants";
 
 const getInitials = (name: string) => {
 	return name

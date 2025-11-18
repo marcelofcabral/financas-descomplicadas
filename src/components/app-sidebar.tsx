@@ -50,6 +50,8 @@ const CheckIcon = (
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const { data: user, isLoading } = useUserDataQuery();
 
+	console.log("user data in sidebar:", user);
+
 	return (
 		<Sidebar
 			collapsible="icon"

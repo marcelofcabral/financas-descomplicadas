@@ -2,42 +2,10 @@ import { Link } from "react-router";
 import ReadingProgress from "@/components/reading-progress";
 import Title from "@/components/title";
 import { useUserDataQuery } from "@/features/auth/api/login";
-import {
-	ARTICLE_ID_TO_TITLE_MAP,
-	SUGGESTED_ARTICLE_ORDER,
-} from "@/utils/constants";
-
-const findFirstUnreadArticle = (
-	userArticleCompletions: { article_id: string }[],
-) => {
-	if (userArticleCompletions.length === 0)
-		return [
-			SUGGESTED_ARTICLE_ORDER[0],
-			ARTICLE_ID_TO_TITLE_MAP[SUGGESTED_ARTICLE_ORDER[0]],
-		];
-
-	if (userArticleCompletions.length === SUGGESTED_ARTICLE_ORDER.length)
-		return [
-			SUGGESTED_ARTICLE_ORDER[0],
-			ARTICLE_ID_TO_TITLE_MAP[SUGGESTED_ARTICLE_ORDER[0]],
-		];
-
-	for (let i = 0; i < userArticleCompletions.length; i++) {
-		if (userArticleCompletions[i].article_id !== SUGGESTED_ARTICLE_ORDER[i]) {
-			return [
-				SUGGESTED_ARTICLE_ORDER[i],
-				ARTICLE_ID_TO_TITLE_MAP[SUGGESTED_ARTICLE_ORDER[i]],
-			];
-		}
-	}
-};
+import { ARTICLE_ID_TO_TITLE_MAP } from "@/utils/constants";
 
 const ContinuarAprendendo: React.FC = () => {
 	const { data: userData } = useUserDataQuery();
-
-	const firstUnreadArticle = findFirstUnreadArticle(
-		userData?.user_article_completions || [],
-	);
 
 	return (
 		<div className="space-y-8">
@@ -63,10 +31,12 @@ const ContinuarAprendendo: React.FC = () => {
 			</p>
 
 			<Link
-				to={`/financas-descomplicadas/modulos/conceitos-basicos/${firstUnreadArticle?.[0]}`}
+				to={`/financas-descomplicadas/modulos/conceitos-basicos/${userData?.next_article || "taxas-e-juros"}`}
 				className="flex items-center gap-2 p-3 rounded-lg border border-border/80 hover:border-primary hover:bg-primary/5 transition-all justify-center text-xl font-medium mx-auto w-[30%] text-center"
 			>
-				<span className="text-text">{firstUnreadArticle?.[1]}</span>
+				<span className="text-text">
+					{ARTICLE_ID_TO_TITLE_MAP[userData?.next_article || "taxas-e-juros"]}
+				</span>
 			</Link>
 		</div>
 	);

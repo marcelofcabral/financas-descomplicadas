@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { supabase } from "@/api-client";
 
 const insertUserArticleCompletion = async (articleId: string) => {
@@ -22,12 +22,7 @@ const insertUserArticleCompletion = async (articleId: string) => {
 };
 
 export const useInsertUserArticleCompletionMutation = () => {
-	const queryClient = useQueryClient();
-
 	return useMutation({
 		mutationFn: insertUserArticleCompletion,
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["userData"] });
-		},
 	});
 };

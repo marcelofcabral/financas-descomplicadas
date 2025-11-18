@@ -121,11 +121,9 @@ const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
 
 createRoot(rootElement).render(
-	<StrictMode>
-		<SidebarProvider>
-			<QueryClientProvider client={queryClient}>
-				<RouterProvider router={router} />
-			</QueryClientProvider>
-		</SidebarProvider>
-	</StrictMode>,
+	<SidebarProvider>
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router} />
+		</QueryClientProvider>
+	</SidebarProvider>,
 );
